@@ -20,7 +20,8 @@
     "paths": {
       "@users/*": ["src/models/users/*"],
       "@polls/*": ["src/models/polls/*"],
-      "@questions/*": ["src/models/questions/*"]
+      "@questions/*": ["src/models/questions/*"],
+      "@guards/*": ["src/common/decorators/guards/*"]
     }
   }
 }

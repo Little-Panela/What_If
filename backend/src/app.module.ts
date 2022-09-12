@@ -3,12 +3,14 @@ import { ConfigModule } from '@nestjs/config';
 import { UsersService } from './models/users/users.service';
 import { UsersModule } from './models/users/users.module';
 import Joi from 'joi';
-import { GoogleAuthenticationController } from './authentication/google-authentication/google-authentication.controller';
-import { GoogleAuthenticationService } from './authentication/google-authentication/google-authentication.service';
+import { GoogleAuthenticationController } from './authentication/google/google.controller';
+import { GoogleAuthenticationService } from './authentication/google/google.service';
 import { DatabasesModule } from './providers';
 import { PollsModule } from './models/polls/polls.module';
 import { QuestionsService } from './models/questions/questions.service';
 import { QuestionsModule } from './models/questions/questions.module';
+import { GoogleAuthenticationModule } from './authenticantion/google-authentication/google-authentication.module';
+import { JwtModule } from './authentication/jwt/jwt.module';
 
 @Module({
   imports: [
@@ -22,7 +24,9 @@ import { QuestionsModule } from './models/questions/questions.module';
     DatabasesModule,
     UsersModule,
     PollsModule,
-    QuestionsModule
+    QuestionsModule,
+    GoogleAuthenticationModule,
+    JwtModule
   ],
   controllers: [GoogleAuthenticationController],
   providers: [GoogleAuthenticationService, UsersService, QuestionsService]
