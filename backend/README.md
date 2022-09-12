@@ -1,5 +1,5 @@
 
-## Sex Adapt - Back End
+## What If - Back End
 
 ## Dependencies:
 
@@ -16,7 +16,7 @@
 
 ## Docker infos:
 	Docker will be running on port 5432 (default)
-	Docker container default name is postgres-sex-adapt
+	Docker container default name is postgres-whatif
 
 ## Known Errors:
 
@@ -25,7 +25,7 @@
 		- Solution 1: `sudo service run docker`;
 		- Solution 2: Run setup step 1 again;
 		- Solution 3: Check your firewall;
-2. error: database "sex_adapt" does not exist
+2. error: database "what-if" does not exist
 	- Database was created
 		- Solution: 
 			1. Execute `docker exec -it postgres-sex-adapt psql -U postgres`;
@@ -34,4 +34,5 @@
 
 
 ## Checklist:
- - [ ] TAMO INDO
+ - [ ] Create Services
+ - [ ] Create UseGoogleAuth Guard
