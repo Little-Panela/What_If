@@ -20,6 +20,9 @@ export class User implements IUser {
   @Column()
   name: string;
 
+  @Column({ name: 'avatar_url' })
+  avatarUrl: string;
+
   @OneToMany(() => Poll, (poll: Poll) => poll.creator)
   createdPolls: Poll[];
 

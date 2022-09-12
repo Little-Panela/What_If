@@ -1,9 +1,13 @@
-import { IPoll } from '../interfaces';
+import { IQuestion } from "@questions/interfaces";
+import { IsNotEmpty, IsString, IsUUID } from "class-validator";
 
-export class CreatePollDto implements IPoll {
-  email: string;
-  name: string;
-  password: string;
+export class CreateQuestionDto implements IQuestion {
+  @IsUUID()
+  poll: string;
+
+  @IsString()
+  @IsNotEmpty()
+  text: string;
 }
 
-export default CreatePollDto;
+export default CreateQuestionDto;

@@ -3,10 +3,10 @@ import { IQuestion } from '@questions/interfaces';
 
 export interface IPoll {
   id?: string;
-  creator: IUser;
+  creator: IUser | string;
   title: string;
-  questions: IQuestion[];
-  respondents: IUser[]
+  questions: IQuestion[] | string[];
+  respondents?: IUser[] | string[];
   createdAt?: Date;
   updatedAt?: Date;
 }

@@ -39,13 +39,4 @@ export class UsersService {
     await this.usersRepository.save(newUser);
     return newUser;
   }
-
-  async createWithGoogle(email: string, name: string) {
-    const newUser = this.usersRepository.create({
-      email,
-      name
-    });
-    await this.usersRepository.save(newUser);
-    return newUser;
-  }
 }

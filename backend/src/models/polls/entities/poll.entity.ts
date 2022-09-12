@@ -1,6 +1,7 @@
 import { IPoll } from '@polls/interfaces';
-import { Question } from '@questions/entities';
 import { User } from '@users/entities';
+import { Question } from '@questions/entities'
+
 import {
   Column,
   CreateDateColumn,

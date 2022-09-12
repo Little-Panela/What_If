@@ -3,9 +3,9 @@ import { IAnwser } from '@questions/interfaces';
 
 export interface IQuestion {
   id?: string;
-  poll: IPoll;
+  poll: IPoll | string;
   text: string;
-  anwsers: IAnwser[];
+  anwsers?: IAnwser[];
   createdAt?: Date
   updatedAt?: Date
 }
