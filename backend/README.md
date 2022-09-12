@@ -1,7 +1,4 @@
-
-## What If - Back End
-
-## Dependencies:
+s:
 
 - [Docker](https://www.docker.com/)
 - [NodeJS](https://nodejs.org/)
@@ -28,11 +25,11 @@
 2. error: database "what-if" does not exist
 	- Database was created
 		- Solution: 
-			1. Execute `docker exec -it postgres-sex-adapt psql -U postgres`;
-			2. Execute `CREATE DATABASE "sex_adapt"`;
+			1. Execute `docker exec -it postgres-what-if psql -U postgres`;
+			2. Execute `CREATE DATABASE "what-if"`;
 			3. Quit with \q and try again;
 
 
 ## Checklist:
  - [ ] Create Services
- - [ ] Create UseGoogleAuth Guard
+ - [x] Create UseGoogleAuth Guard
