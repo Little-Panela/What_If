@@ -1,4 +1,4 @@
-import { Divider, FooterContainer, Link, TextField } from "./styles";
+import { Divider, FooterContainer, Link, TextField } from './styles'
 
 export function Footer() {
   return (
@@ -10,19 +10,17 @@ export function Footer() {
           <span>Made with ♡ by </span>
           <Link
             rel="noreferrer noopener"
-            href="https://github.com/ryanolivrdev"
-          >
+            href="https://github.com/ryanolivrdev">
             Ryan Oliveira
           </Link>
           <span> and </span>
           <Link
             rel="noreferrer noopener"
-            href="https://github.com/FabioNeves00"
-          >
+            href="https://github.com/FabioNeves00">
             Fabio Neves
           </Link>
         </p>
       </TextField>
     </FooterContainer>
-  );
+  )
 }

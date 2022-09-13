@@ -1,47 +1,71 @@
-import { useEffect, useState } from "react";
-import { Lightning } from "../../../assets/lightning";
-import { ButtonLogin, Divider, Hamburger, Logo, Menu, NavbarContainer } from "./styles";
-import { useGoogleLogin } from '@react-oauth/google';
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { Link as ScroolTo } from 'react-scroll'
 
+import {
+  ButtonLogin,
+  Divider,
+  Hamburger,
+  Logo,
+  Menu,
+  NavbarContainer,
+} from './styles'
+import { Lightning } from '../../../assets/lightning'
 
+import { useGoogleLogin } from '@react-oauth/google'
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter()
+
+  const [isOpen, setIsOpen] = useState(false)
 
   function changeNavBarState() {
-    setIsOpen((curr) => !curr);
+    setIsOpen((curr) => !curr)
   }
 
+  const googleLogin = useGoogleLogin({
+    flow: 'auth-code',
+    onSuccess: async (codeResponse) => console.log(codeResponse),
 
-const login = useGoogleLogin({
-  onSuccess: codeResponse => console.log(codeResponse),
-  flow: 'auth-code',
-});
-
+    onError: (codeResponse) => console.log(codeResponse),
+  })
   return (
     <NavbarContainer>
       <Logo>
-        <h1>What <span>If</span></h1>
+        <h1>
+          What <span>If</span>
+        </h1>
         <Divider />
         <span>STRAWPOLL</span>
       </Logo>
 
       <Menu isOpen={isOpen} onClick={changeNavBarState}>
-        <li className="active" >
-          <a href="#" >Início</a>
-        </li>
+        <ScroolTo activeClass="activeHome" to="home" spy={true} smooth={true}>
+          Início
+          <span />
+        </ScroolTo>
+
+        <ScroolTo activeClass="activeAbout" to="about" spy={true} smooth={true}>
+          Sobre
+          <span />
+        </ScroolTo>
+
+        <a onClick={() => router.push('/about')}>
+          Criar pequisa
+          <span />
+        </a>
         <li>
-          <a href="#">Sobre</a>
-        </li>
-        <li>
-          <a href="#">Criar pequisa</a>
+          <ButtonLogin className="mobile" isOpen={isOpen} onClick={googleLogin}>
+            <Lightning />
+            <span>FAÇA LOGIN COM O GOOGLE</span>
+          </ButtonLogin>
         </li>
       </Menu>
       <Hamburger isOpen={isOpen} onClick={changeNavBarState} />
-      <ButtonLogin isOpen={isOpen} onClick={login}>
+      <ButtonLogin className="desktop" isOpen={isOpen} onClick={googleLogin}>
         <Lightning />
         <span>FAÇA LOGIN COM O GOOGLE</span>
       </ButtonLogin>
     </NavbarContainer>
-  );
+  )
 }

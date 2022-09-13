@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 interface MenuProps {
-  isOpen: Boolean;
+  isOpen: Boolean
 }
 
 export const NavbarContainer = styled.div`
@@ -9,20 +9,27 @@ export const NavbarContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 
   width: 100vw;
   height: 4.6rem;
   padding-right: 5rem;
   padding-left: 5rem;
 
-  background: ${(props) => props.theme["gray-800"]};
-  border-bottom: 1px ${(props) => props.theme["gray-600"]} solid;
+  background: ${(props) => props.theme['gray-800']};
+  border-bottom: 1px ${(props) => props.theme['gray-600']} solid;
 
   @media (max-width: 720px) {
     padding-left: 2rem;
     padding-right: 2rem;
   }
-`;
+  /* 
+  .active {
+    color: red !important;
+  } */
+`
 
 export const Logo = styled.div`
   display: flex;
@@ -33,35 +40,35 @@ export const Logo = styled.div`
   h1 {
     font-size: 2.25rem;
     font-weight: 700;
-    color: ${(props) => props.theme["white"]};
+    color: ${(props) => props.theme.white};
 
     span {
       font-size: 2.25rem;
       font-weight: 700;
-      color: ${(props) => props.theme["red-500"]};
+      color: ${(props) => props.theme['red-500']};
     }
   }
 
   > span {
     font-size: 0.9rem;
     font-weight: 700;
-    color: ${(props) => props.theme["gray-300"]};
+    color: ${(props) => props.theme['gray-300']};
 
     @media (max-width: 720px) {
       display: none;
     }
   }
-`;
+`
 
 export const Divider = styled.div`
   width: 5px;
   height: 33px;
-  background-color: ${(props) => props.theme["white"]};
+  background-color: ${(props) => props.theme.white};
 
   @media (max-width: 720px) {
     display: none;
   }
-`;
+`
 
 export const Menu = styled.ul<MenuProps>`
   list-style: none;
@@ -70,45 +77,51 @@ export const Menu = styled.ul<MenuProps>`
   gap: 2rem;
   position: relative;
 
-  li a {
+  .activeHome {
+    color: ${(props) => props.theme.white};
+  }
+  .activeAbout {
+    color: ${(props) => props.theme.white};
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     font-weight: 700;
     text-decoration: none;
-    color: ${(props) => props.theme["gray-300"]};
-    position: relative;
-    transition: all ease-in-out 250ms;
+    color: ${(props) => props.theme['gray-300']};
 
-    &::after {
-      content: "";
-      position: absolute;
-      display: block;
-      height: 0.1rem;
-      width: 0%;
-      background-color: ${(props) => props.theme["white"]};
-      bottom: -1rem;
-      transition: all ease-in-out 250ms;
-    }
+    transition: all 0.2s ease-in;
 
-    &:hover::after {
-      width: 90%;
+    span {
+      width: 0;
+      height: 2px;
+      background-color: ${(props) => props.theme.white};
+      transition: width 0.2s;
     }
 
     &:hover {
-      color: ${(props) => props.theme["white"]};
+      color: ${(props) => props.theme.white};
+
+      span {
+        width: 100%;
+      }
     }
   }
-
 
   @media (max-width: 1000px) {
     justify-content: center;
     align-items: center;
     overflow: hidden;
     width: 100%;
-    height: ${({isOpen}) => (isOpen ? '200px' : '0')};
+    height: ${({ isOpen }) => (isOpen ? '250px' : '0')};
     z-index: 999;
     flex-direction: column;
 
-    background: ${(props) => props.theme["gray-800"]};
-    border-bottom: 1px ${(props) => props.theme["gray-600"]} solid;
+    background: ${(props) => props.theme['gray-800']};
+    border-bottom: 1px ${(props) => props.theme['gray-600']} solid;
 
     position: absolute;
     left: 0;
@@ -116,7 +129,7 @@ export const Menu = styled.ul<MenuProps>`
 
     transition: height 0.3s ease-in;
   }
-`;
+`
 
 export const ButtonLogin = styled.button<MenuProps>`
   display: flex;
@@ -126,10 +139,10 @@ export const ButtonLogin = styled.button<MenuProps>`
   padding: 0.7rem 1.5rem;
   gap: 0.6rem;
 
-  border: 1px ${(props) => props.theme["orange-500"]} solid;
+  border: 1px ${(props) => props.theme['orange-500']} solid;
   border-radius: 4px;
   background: transparent;
-  color: ${(props) => props.theme["white"]};
+  color: ${(props) => props.theme.white};
 
   transition: all 0.5s ease-in-out;
 
@@ -140,28 +153,38 @@ export const ButtonLogin = styled.button<MenuProps>`
 
   &:focus {
     box-shadow: none;
-    border-color: ${(props) => props.theme["red-500"]};
+    border-color: ${(props) => props.theme['red-500']};
   }
 
   &:hover {
-    background-color: ${(props) => props.theme["white"]};
-    color: ${(props) => props.theme["gray-900"]};
-    box-shadow: 0 0 1em ${(props) => props.theme["orange-500"]};
+    background-color: ${(props) => props.theme.white};
+    color: ${(props) => props.theme['gray-900']};
+    box-shadow: 0 0 1em ${(props) => props.theme['orange-500']};
     border-color: none;
 
     svg {
       g {
         path {
-          stroke: ${(props) => props.theme["gray-900"]};
+          stroke: ${(props) => props.theme['gray-900']};
         }
       }
     }
   }
 
-  @media only screen and (max-width: 1000px) {
+  &.mobile {
     display: none;
   }
-`;
+
+  @media only screen and (max-width: 1000px) {
+    &.desktop {
+      display: none;
+    }
+
+    &.mobile {
+      display: flex;
+    }
+  }
+`
 
 export const Hamburger = styled.span<MenuProps>`
   border-top: 2px solid;
@@ -171,7 +194,7 @@ export const Hamburger = styled.span<MenuProps>`
 
   &::after,
   &::before {
-    content: "";
+    content: '';
     display: block;
     width: 1.5rem;
     height: 0.125rem;
@@ -182,17 +205,17 @@ export const Hamburger = styled.span<MenuProps>`
   }
 
   &:hover {
-    color: ${(props) => props.theme["orange-500"]};
+    color: ${(props) => props.theme['orange-500']};
   }
 
   border-top-color: ${({ isOpen }) =>
-    isOpen ? "transparent" : "currentColor"};
+    isOpen ? 'transparent' : 'currentColor'};
 
-  ${({ isOpen }) => (isOpen ? "&::before{transform: rotate(135deg);}" : "")}
+  ${({ isOpen }) => (isOpen ? '&::before{transform: rotate(135deg);}' : '')}
   ${({ isOpen }) =>
-    isOpen ? "&::after{transform: rotate(-135deg); top: -7px;}" : ""}
+    isOpen ? '&::after{transform: rotate(-135deg); top: -7px;}' : ''}
 
   @media only screen and (min-width: 1000px) {
     display: none;
   }
-`;
+`
