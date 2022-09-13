@@ -10,7 +10,6 @@ export default function Document() {
         />
         <meta name="theme-color" content="#121214" />
         <meta name="color-scheme" content="dark" />
-        <title>What If</title>
       </Head>
       <body>
         <Main />

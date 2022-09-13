@@ -9,7 +9,6 @@ export const CardContainer = styled.div`
   gap: 12.5rem;
 
   padding: 3.8rem 3.1rem;
-  margin-top: 4.3rem;
   /* height: 100vh; */
   margin-left: 5rem;
   margin-right: 5rem;

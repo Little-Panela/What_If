@@ -11,5 +11,6 @@ export const HomeContainer = styled.div`
 export const WrapperHome = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 4.3rem;
   width: 100vw;
 `

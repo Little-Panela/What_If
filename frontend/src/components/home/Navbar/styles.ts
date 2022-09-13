@@ -79,9 +79,15 @@ export const Menu = styled.ul<MenuProps>`
 
   .activeHome {
     color: ${(props) => props.theme.white};
+    span {
+      width: 100%;
+    }
   }
   .activeAbout {
     color: ${(props) => props.theme.white};
+    span {
+      width: 100%;
+    }
   }
 
   a {
@@ -106,7 +112,7 @@ export const Menu = styled.ul<MenuProps>`
       color: ${(props) => props.theme.white};
 
       span {
-        width: 100%;
+        width: 80%;
       }
     }
   }

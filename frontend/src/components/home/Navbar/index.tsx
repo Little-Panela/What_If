@@ -40,7 +40,12 @@ export function Navbar() {
       </Logo>
 
       <Menu isOpen={isOpen} onClick={changeNavBarState}>
-        <ScroolTo activeClass="activeHome" to="home" spy={true} smooth={true}>
+        <ScroolTo
+          activeClass="activeHome"
+          to="home"
+          spy={true}
+          smooth={true}
+          offset={-150}>
           Início
           <span />
         </ScroolTo>
